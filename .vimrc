@@ -33,7 +33,7 @@ filetype plugin indent on
 let g:ycm_global_ycm_extra_conf = '/home/miki/.ycm_extra_conf.py'
 
 
-"ycm preview window closing after completion
+"ycm preview window closing after completion 
 let g:ycm_autoclose_preview_window_after_completion=1
 
 "ycm preview window showing below code
@@ -42,7 +42,7 @@ set splitbelow
 
 colorscheme elflord
 
-"relative numbers of lines
+"relative numbers
 set relativenumber
 
 let g:airline_powerline_fonts = 1

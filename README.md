@@ -1,1 +1,1 @@
-Some of dotfiles I use
+Some of dotfiles I'm using
