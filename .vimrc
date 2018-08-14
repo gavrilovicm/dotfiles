@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 "ycm plugin
 Plugin 'Valloric/YouCompleteMe'
 
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -33,7 +32,31 @@ filetype plugin indent on
 let g:ycm_global_ycm_extra_conf = '/home/miki/.ycm_extra_conf.py'
 
 
-"ycm preview window closing after completion 
+
+"================================================
+"make every .c file open with skeleton.c code
+"path to skeleton.c folder is ~/vim/skeleton.c
+" ----------------------------------------------
+"code is:
+"
+"#include<stdio.h>
+"#include<stdlib.h>
+"
+"int main(){
+"
+"	exit(EXIT_SUCCESS);
+"}
+"================================================
+au BufNewFile *.c 0r ~/vim/skeleton.c | let IndentStyle = "c"
+"================================================
+"meaning of 0r :
+"0 positions the insertion to line zero and the r instructs vim to read in the
+"contents of the file at the insertion location.
+"================================================
+
+
+
+"ycm preview window closing after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 
 "ycm preview window showing below code
@@ -42,7 +65,7 @@ set splitbelow
 
 colorscheme elflord
 
-"relative numbers
-set relativenumber
+"relative numbers of lines
+set number
 
 let g:airline_powerline_fonts = 1
