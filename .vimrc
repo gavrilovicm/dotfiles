@@ -1,6 +1,11 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"Maintain undo history between sessions
+set undofile
+"Make all undo files go in ~/.vim/undodir directory	(optional)
+set undodir=~/.vim/undodir 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -53,6 +58,9 @@ au BufNewFile *.c 0r ~/vim/skeleton.c | let IndentStyle = "c"
 "0 positions the insertion to line zero and the r instructs vim to read in the
 "contents of the file at the insertion location.
 "================================================
+
+"same command for skeleton code for .pas files
+au BufNewFile *.pas 0r ~/vim/skeleton.pas | let IndentStyle = "pas"
 
 
 
