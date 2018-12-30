@@ -6,6 +6,9 @@ set undofile
 "Make all undo files go in ~/.vim/undodir directory	(optional)
 set undodir=~/.vim/undodir 
 
+"avoid problems with fish shell
+set shell=bash
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -14,16 +17,37 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "ycm plugin
 Plugin 'Valloric/YouCompleteMe'
+
+"smart brackets
+Plugin 'jiangmiao/auto-pairs'
+
+"plugin for highlight search
+Plugin 'haya14busa/incsearch.vim'
+
+set scrolloff=9
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"extension for smart tabline
+let g:airline#extensions#tabline#enabled = 1
 
 set laststatus=2
+
+"-----------------------------------
+"plugins for search highlights in vim
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+"-----------------------------------
+
 
 
 let g:airline_theme='simple'
@@ -37,32 +61,30 @@ filetype plugin indent on
 let g:ycm_global_ycm_extra_conf = '/home/miki/.ycm_extra_conf.py'
 
 
-
 "================================================
-"make every .c file open with skeleton.c code
-"path to skeleton.c folder is ~/vim/skeleton.c
-" ----------------------------------------------
-"code is:
-"
-"#include<stdio.h>
-"#include<stdlib.h>
-"
-"int main(){
-"
-"	exit(EXIT_SUCCESS);
-"}
+"make every .c and .cpp file open with skeleton.c code
+"path to skeleton.c and skeleton.cpp folder is ~/vim/skeleton.(c|cpp)
 "================================================
 au BufNewFile *.c 0r ~/vim/skeleton.c | let IndentStyle = "c"
+au BufNewFile *.cpp 0r ~/vim/skeleton.cpp | let IndentStyle = "c"
 "================================================
 "meaning of 0r :
 "0 positions the insertion to line zero and the r instructs vim to read in the
 "contents of the file at the insertion location.
 "================================================
 
-"same command for skeleton code for .pas files
+"same command for skeleton code for .pas and .py files
 au BufNewFile *.pas 0r ~/vim/skeleton.pas | let IndentStyle = "pas"
+au BufNewFile *.py 0r ~/vim/skeleton.py | let IndentStyle = "py"
 
+"making .tmux.conf files open with tmux.vim highlighting 
+au BufRead,BufNewFile *.tmux* set filetype=tmux
 
+"setting up syntax highlight for bison
+augroup bison
+	au!
+	autocmd BufNewFile,BufRead *.ypp   set syntax=yacc
+augroup END
 
 "ycm preview window closing after completion
 let g:ycm_autoclose_preview_window_after_completion=1
