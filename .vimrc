@@ -48,12 +48,28 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 "-----------------------------------
 
+"making sessions with one keystroke
+"quick write session with F2 key
+map <F2> :mksession! ~/vim_session <cr>
+
+"loading session with F3 key
+map <F3> :source ~/vim_session <cr>
 
 
 let g:airline_theme='simple'
 set encoding=utf-8
 set tabstop=4 
 set shiftwidth=4
+set nowrap
+set sidescroll=1
+
+"vsplit opens new tab right of current one
+set splitright
+
+"ycm preview window showing below code
+"also split opens new tabs below current one
+set splitbelow
+
 execute pathogen#infect()
 filetype plugin indent on
 
@@ -77,7 +93,7 @@ au BufNewFile *.cpp 0r ~/vim/skeleton.cpp | let IndentStyle = "c"
 au BufNewFile *.pas 0r ~/vim/skeleton.pas | let IndentStyle = "pas"
 au BufNewFile *.py 0r ~/vim/skeleton.py | let IndentStyle = "py"
 
-"making .tmux.conf files open with tmux.vim highlighting 
+"making .tmux.conf files open with tmux.vim highlighting
 au BufRead,BufNewFile *.tmux* set filetype=tmux
 
 "setting up syntax highlight for bison
@@ -89,13 +105,11 @@ augroup END
 "ycm preview window closing after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 
-"ycm preview window showing below code
-set splitbelow
 
 
 colorscheme elflord
 
-"relative numbers of lines
+"numbers of lines
 set number
 
 let g:airline_powerline_fonts = 1
