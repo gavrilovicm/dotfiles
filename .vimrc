@@ -102,6 +102,9 @@ augroup bison
 	autocmd BufNewFile,BufRead *.ypp   set syntax=yacc
 augroup END
 
+" setting syntax highlight for prolog
+	autocmd BufNewFile,BufRead *.pro set syntax=prolog
+
 "ycm preview window closing after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 
