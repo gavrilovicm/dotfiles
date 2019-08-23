@@ -28,6 +28,12 @@ Plugin 'jiangmiao/auto-pairs'
 "plugin for highlight search
 Plugin 'haya14busa/incsearch.vim'
 
+"plugin for markdown vim syntax
+Plugin 'plasticboy/vim-markdown'
+" this plugin should be installed like this:
+" :source %
+" :PluginInstall
+
 set scrolloff=9
 
 " All of your Plugins must be added before the following line
